@@ -17,9 +17,9 @@ let dgram = require('dgram'),
     client = dgram.createSocket('udp4'),
     magicPacketTitle = 'FFFFFFFFFFFF',
     magicPacketEnd = '000000000000',
-    magicPacketMac = (new Array(17)).join('80FA5B103F5E'),
+    magicPacketMac = (new Array(17)).join('509A4C195CAC'),
     message = new Buffer(hexStringToBufferArr(magicPacketTitle + magicPacketMac + magicPacketEnd));
-
+    //message = Buffer.alloc(108, magicPacketTitle + magicPacketMac + magicPacketEnd, 'hex');
 if (process.argv[2]) {
     client.send(message, 9, process.argv[2], (err) => {
         console.log(`已成功向IP为${process.argv[2]}的目标主机发送幻数据包`);
